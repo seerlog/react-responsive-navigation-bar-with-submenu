@@ -1,38 +1,99 @@
 import { AiFillEdit } from "react-icons/ai";
 import { AiFillBoxPlot } from "react-icons/ai";
+import { AiFillMoon } from "react-icons/ai";
 import { AiFillProduct } from "react-icons/ai";
+import { AiFillSkin } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+import { AiFillVideoCamera } from "react-icons/ai";
+import { AiFillRest } from "react-icons/ai";
 
 export const menuItems = [
     {
-        "ko": "스터디",
-        "en": "study",
+        "ko": "메뉴1",
+        "en": "menu1",
         "icon": <AiFillEdit />,
         subMenuItems: [
-            { "ko": "자바스크립트", "en": "javascript" },
-            { "ko": "리액트", "en": "react" },
-            { "ko": "자바", "en": "java" },
-            { "ko": "스프링", "en": "spring" },
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
         ]
     },
     {
-        "ko": "개발로그",
-        "en": "devlog",
-        "icon": <AiFillProduct />,
-        subMenuItems: [
-            { "ko": "프론트엔드", "en": "frontend" },
-            { "ko": "백엔드", "en": "backend" },
-            { "ko": "클라우드", "en": "cloud" },
-        ]
-    },
-    {
-        "ko": "개발규칙",
-        "en": "convention",
+        "ko": "메뉴2",
+        "en": "menu2",
         "icon": <AiFillBoxPlot />,
         subMenuItems: [
-            { "ko": "자바스크립트", "en": "javascript" },
-            { "ko": "리액트", "en": "react" },
-            { "ko": "자바", "en": "java" },
-            { "ko": "SQL", "en": "sql" },
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴3",
+        "en": "menu3",
+        "icon": <AiFillMoon />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴4",
+        "en": "menu4",
+        "icon": <AiFillProduct />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴5",
+        "en": "menu5",
+        "icon": <AiFillSkin />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴6",
+        "en": "menu6",
+        "icon": <AiFillHeart />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴7",
+        "en": "menu7",
+        "icon": <AiFillVideoCamera />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
+        ]
+    },
+    {
+        "ko": "메뉴8",
+        "en": "menu8",
+        "icon": <AiFillRest />,
+        subMenuItems: [
+            { "ko": "서브메뉴1", "en": "submenu1" },
+            { "ko": "서브메뉴2", "en": "submenu2" },
+            { "ko": "서브메뉴3", "en": "submenu3" },
+            { "ko": "서브메뉴4", "en": "submenu4" },
         ]
     },
 ]
