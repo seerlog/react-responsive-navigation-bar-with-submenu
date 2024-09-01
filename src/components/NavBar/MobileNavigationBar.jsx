@@ -54,6 +54,7 @@ const MobileNavigationBarItem = ({ menuItem, focusedMenu, setFocusedMenu, focuse
                 </div>
             </div>
             <ul className={['mobile-nav-bar-submenu'
+                , isFoldSideBar && 'mobile-nav-bar-submenu-hide'
                 , !isFoldSideBar && focusedMenu === `${menuItem.en}` && 'mobile-nav-bar-submenu-show'].join(' ')}>
                 {
                     menuItem.subMenuItems.map((subMenuItem, key) =>

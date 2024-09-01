@@ -211,8 +211,18 @@
     padding-bottom: 8px;
 }
 
-.mobile-nav-bar-item:hover .mobile-nav-bar-submenu,
-.mobile-nav-bar-submenu:hover
+.mobile-nav-bar-submenu-hide {
+    display: none;
+}
+
+.mobile-nav-bar-submenu-show {
+    display: flex;
+    flex-direction: column;
+    animation: fade-in 1s;
+}
+
+.mobile-nav-bar-item:hover .mobile-nav-bar-submenu:not(.mobile-nav-bar-submenu-hide),
+.mobile-nav-bar-submenu:not(.mobile-nav-bar-submenu-hide):hover
  {
     display: flex;
     flex-direction: column;
@@ -232,12 +242,6 @@
 
 .mobile-nav-bar-submenu > li:hover {
     color: #23D16E;
-}
-
-.mobile-nav-bar-submenu-show {
-    display: flex;
-    flex-direction: column;
-    animation: fade-in 1s;
 }
 
 .mobile-nav-bar-submenu > li.mobile-nav-bar-submenu-label-focused {
