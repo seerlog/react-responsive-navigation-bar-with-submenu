@@ -1,0 +1,29 @@
+.title {
+    font-family: 'Pretendard';
+    font-weight: 900;
+}
+
+.title--primary {
+    color: #333;
+    border-bottom: 3px solid #1ea7fd;
+}
+
+.title--secondary {
+    color: #333;
+    border-bottom: 3px solid #333;
+}
+
+.title--small {
+    font-size: 18px;
+    padding: 5px 8px;
+}
+
+.title--medium {
+    font-size: 24px;
+    padding: 6px 10px;
+}
+
+.title--large {
+    font-size: 36px;
+    padding: 7px 12px;
+}
