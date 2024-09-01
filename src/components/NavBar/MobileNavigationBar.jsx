@@ -13,12 +13,11 @@ const MobileNavigationBar = ({
                                  isFoldSideBar,
                                  setIsFoldSideBar
                              }) => {
-
     return (
         <div className={['mobile-nav-bar', ifTrue(isFoldSideBar, 'mobile-nav-bar-fold')].join(' ')} {...props} >
-            <div className={['mobile-nav-bar-head', ifTrue(isFoldSideBar, 'mobile-nav-bar-head-fold')].join(' ')}>
+            <div className={'mobile-nav-bar-head'}>
                 <div
-                    className={['mobile-nav-bar-logo', ifTrue(isFoldSideBar, 'mobile-nav-bar-logo-fold')].join(' ')}
+                    className={'mobile-nav-bar-logo'}
                     onClick={() => {
                         setFocusedMenu(getFirstMenuItem().en);
                         setFocusedSubMenu(getFirstSubMenuItem().en);
@@ -38,22 +37,14 @@ const MobileNavigationBar = ({
                         focusedMenu={focusedMenu}
                         setFocusedMenu={setFocusedMenu}
                         focusedSubMenu={focusedSubMenu}
-                        setFocusedSubMenu={setFocusedSubMenu}
-                        isFoldSideBar={isFoldSideBar}/>
+                        setFocusedSubMenu={setFocusedSubMenu} />
                 )
             }
         </div>
     );
 }
 
-const MobileNavigationBarItem = ({
-                                     menuItem,
-                                     focusedMenu,
-                                     setFocusedMenu,
-                                     focusedSubMenu,
-                                     setFocusedSubMenu,
-                                     isFoldSideBar
-                                 }) => {
+const MobileNavigationBarItem = ({ menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu }) => {
     const isMenuFocused = focusedMenu === `${menuItem.en}`;
 
     return (
@@ -69,16 +60,14 @@ const MobileNavigationBarItem = ({
                 <div data-key={menuItem.en} className={'mobile-nav-bar-menu-icon'}>
                     {menuItem.icon}
                 </div>
-                <div data-key={menuItem.en}
-                     className={['mobile-nav-bar-menu-label'].join(' ')}>
+                <div data-key={menuItem.en} className={'mobile-nav-bar-menu-label'}>
                     {menuItem.ko}
                 </div>
             </div>
-            <ul className={['mobile-nav-bar-submenu'].join(' ')}>
+            <ul className={'mobile-nav-bar-submenu'}>
                 {
                     menuItem.subMenuItems.map((subMenuItem, key) => {
                         const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
-
                         return <li key={key}
                                    className={ifTrue((isMenuFocused && isSubMenuFocused), 'mobile-nav-bar-submenu-label-focused')}
                                    onClick={() => {

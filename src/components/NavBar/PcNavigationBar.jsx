@@ -33,7 +33,7 @@ const PcNavigationBar = ({
     )
 }
 
-const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu}) => {
+const PcNavigationBarItem = ({ menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu }) => {
     const isMenuFocused = focusedMenu === `${menuItem.en}`;
 
     return (
@@ -52,7 +52,6 @@ const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubM
                 {
                     menuItem.subMenuItems.map((subMenuItem, key) => {
                         const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
-
                         return <li key={key}
                                    className={ifTrue((isMenuFocused && isSubMenuFocused), 'pc-nav-bar-submenu-label-focused')}
                                    onClick={() => {
