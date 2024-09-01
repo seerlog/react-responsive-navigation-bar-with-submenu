@@ -7,6 +7,8 @@ import { AiFillHeart } from "react-icons/ai";
 import { AiFillVideoCamera } from "react-icons/ai";
 import { AiFillRest } from "react-icons/ai";
 
+export const siteName = "RIDION";
+
 export const menuItems = [
     {
         "ko": "메뉴1",

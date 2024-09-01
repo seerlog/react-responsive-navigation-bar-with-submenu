@@ -1,20 +1,32 @@
-import { AiOutlineMenuFold } from "react-icons/ai";
-import { AiOutlineMenuUnfold } from "react-icons/ai";
+import {AiOutlineMenuFold} from "react-icons/ai";
+import {AiOutlineMenuUnfold} from "react-icons/ai";
+import {siteName} from "./static/constants";
 
-const MobileNavigationBar = ({ props, menuItems, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu, isFoldSideBar, setIsFoldSideBar }) => {
+const MobileNavigationBar = ({
+                                 props,
+                                 menuItems,
+                                 focusedMenu,
+                                 setFocusedMenu,
+                                 focusedSubMenu,
+                                 setFocusedSubMenu,
+                                 isFoldSideBar,
+                                 setIsFoldSideBar
+                             }) => {
+
     return (
-        <div className={['mobile-nav-bar', isFoldSideBar && 'mobile-nav-bar-fold'].join(' ')} {...props} >
-            <div className={['mobile-nav-bar-head', isFoldSideBar && 'mobile-nav-bar-head-fold'].join(' ')}>
-                <div className={['mobile-nav-bar-logo', isFoldSideBar && 'mobile-nav-bar-logo-fold'].join(' ')}
-                    onClick={() => {
-                        setFocusedMenu(menuItems[0].en);
-                        setFocusedSubMenu(menuItems[0].subMenuItems[0].en);
-                    }}>
-                    RIDION
-                </div>
-                <div className={['mobile-nav-bar-fold-button', isFoldSideBar && 'mobile-nav-bar-fold-button-fold'].join(' ')} onClick={() => { setIsFoldSideBar(!isFoldSideBar) }}>
+        <div className={['mobile-nav-bar', isFoldSideBar ? 'mobile-nav-bar-fold' : undefined].join(' ')} {...props} >
+            <div className={['mobile-nav-bar-head', isFoldSideBar ? 'mobile-nav-bar-head-fold' : undefined].join(' ')}>
+                <div className={['mobile-nav-bar-logo', isFoldSideBar ? 'mobile-nav-bar-logo-fold' : undefined].join(' ')}
+                     onClick={() => {
+                         setFocusedMenu(menuItems[0].en);
+                         setFocusedSubMenu(menuItems[0].subMenuItems[0].en);
+                     }}>{siteName}</div>
+                <div className={'mobile-nav-bar-fold-button'}
+                     onClick={() => {
+                         setIsFoldSideBar(!isFoldSideBar)
+                     }}>
                     {
-                        isFoldSideBar ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />
+                        isFoldSideBar ? <AiOutlineMenuUnfold/> : <AiOutlineMenuFold/>
                     }
                 </div>
             </div>
@@ -27,46 +39,57 @@ const MobileNavigationBar = ({ props, menuItems, focusedMenu, setFocusedMenu, fo
                         setFocusedMenu={setFocusedMenu}
                         focusedSubMenu={focusedSubMenu}
                         setFocusedSubMenu={setFocusedSubMenu}
-                        isFoldSideBar={isFoldSideBar} />
+                        isFoldSideBar={isFoldSideBar}/>
                 )
             }
         </div>
     );
 }
 
-const MobileNavigationBarItem = ({ menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu, isFoldSideBar }) => {
+const MobileNavigationBarItem = ({
+                                     menuItem,
+                                     focusedMenu,
+                                     setFocusedMenu,
+                                     focusedSubMenu,
+                                     setFocusedSubMenu,
+                                     isFoldSideBar
+                                 }) => {
+    const isMenuFocused = focusedMenu === `${menuItem.en}`;
+
     return (
         <div data-key={menuItem.en}
-            className={['mobile-nav-bar-item', isFoldSideBar && 'mobile-nav-bar-item-fold'].join(' ')}>
+             className={['mobile-nav-bar-item', isFoldSideBar ? 'mobile-nav-bar-item-fold' : undefined].join(' ')}>
             <div data-key={menuItem.en}
-                className={['mobile-nav-bar-menu'
-                    , isFoldSideBar ? 'mobile-nav-bar-menu-fold' : 'mobile-nav-bar-menu-unfold'
-                    , focusedMenu === `${menuItem.en}` && 'mobile-nav-bar-menu-focused'].join(' ')}
-                onClick={() => {
-                    setFocusedMenu(`${menuItem.en}`);
-                    setFocusedSubMenu(`${menuItem.subMenuItems[0].en}`);
-                }}>
-                <div data-key={menuItem.en} className={['mobile-nav-bar-menu-icon'].join(' ')}>
+                 className={['mobile-nav-bar-menu'
+                     , isFoldSideBar ? 'mobile-nav-bar-menu-fold' : 'mobile-nav-bar-menu-unfold'
+                     , isMenuFocused ? 'mobile-nav-bar-menu-focused' : undefined].join(' ')}
+                 onClick={() => {
+                     const [firstSubMenuItem] = menuItem.subMenuItems;
+                     setFocusedMenu(`${menuItem.en}`);
+                     setFocusedSubMenu(`${firstSubMenuItem.en}`);
+                 }}>
+                <div data-key={menuItem.en} className={'mobile-nav-bar-menu-icon'}>
                     {menuItem.icon}
                 </div>
-                <div data-key={menuItem.en} className={['mobile-nav-bar-menu-label', isFoldSideBar && 'mobile-nav-bar-menu-label-fold'].join(' ')}>
+                <div data-key={menuItem.en}
+                     className={['mobile-nav-bar-menu-label', isFoldSideBar ? 'mobile-nav-bar-menu-label-fold' : undefined].join(' ')}>
                     {menuItem.ko}
                 </div>
             </div>
             <ul className={['mobile-nav-bar-submenu'
-                , isFoldSideBar && 'mobile-nav-bar-submenu-hide'
-                , !isFoldSideBar && focusedMenu === `${menuItem.en}` && 'mobile-nav-bar-submenu-show'].join(' ')}>
+                , isFoldSideBar ? 'mobile-nav-bar-submenu-hide' : undefined
+                , (!isFoldSideBar && isMenuFocused) ? 'mobile-nav-bar-submenu-show' : undefined].join(' ')}>
                 {
-                    menuItem.subMenuItems.map((subMenuItem, key) =>
-                        <li key={key}
-                            className={[focusedMenu === `${menuItem.en}` && focusedSubMenu === `${subMenuItem.en}` && 'mobile-nav-bar-submenu-label-focused']}
-                            onClick={() => { 
-                                setFocusedMenu(`${menuItem.en}`); 
-                                setFocusedSubMenu(`${subMenuItem.en}`);
-                                console.log(menuItem.en);
-                                console.log(subMenuItem.en); }}>
-                            {subMenuItem.ko}
-                        </li>)
+                    menuItem.subMenuItems.map((subMenuItem, key) => {
+                        const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
+
+                        return <li key={key}
+                                   className={(isMenuFocused && isSubMenuFocused) ? 'mobile-nav-bar-submenu-label-focused' : undefined}
+                                   onClick={() => {
+                                       setFocusedMenu(`${menuItem.en}`);
+                                       setFocusedSubMenu(`${subMenuItem.en}`);
+                                   }}>{subMenuItem.ko}</li>
+                    })
                 }
             </ul>
         </div>

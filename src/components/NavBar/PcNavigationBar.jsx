@@ -1,15 +1,14 @@
-import {getFirstMenuItem, getFirstSubMenuItem} from "./static/constants";
+import {getFirstMenuItem, getFirstSubMenuItem, siteName} from "./static/constants";
 
 const PcNavigationBar = ({props, menuItems, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu}) => {
     return (
         <div>
-            <div className={['pc-nav-bar']} {...props}>
-                <div className={['pc-nav-bar-logo']}
+            <div className={'pc-nav-bar'} {...props}>
+                <div className={'pc-nav-bar-logo'}
                      onClick={() => {
                          setFocusedMenu(getFirstMenuItem().en);
                          setFocusedSubMenu(getFirstSubMenuItem().en);
-                     }}>RIDION
-                </div>
+                     }}>{siteName}</div>
                 {
                     menuItems.map((menuItem, key) =>
                         <PcNavigationBarItem
@@ -30,9 +29,10 @@ const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubM
     const isMenuFocused = focusedMenu === `${menuItem.en}`;
 
     return (
-        <div data-key={menuItem.en} className={['pc-nav-bar-item']}>
+        <div data-key={menuItem.en}
+             className={['pc-nav-bar-item', isMenuFocused ? 'pc-nav-bar-menu-focused' : undefined].join(' ')}>
             <div data-key={menuItem.en}
-                 className={['pc-nav-bar-menu', isMenuFocused && 'pc-nav-bar-menu-focused'].join(' ')}
+                 className={['pc-nav-bar-menu'].join(' ')}
                  onClick={() => {
                      const [firstSubMenuItem] = menuItem.subMenuItems;
                      setFocusedMenu(`${menuItem.en}`);
@@ -40,19 +40,17 @@ const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubM
                  }}>
                 {menuItem.ko}
             </div>
-            <ul className={['pc-nav-bar-submenu']}>
+            <ul className={'pc-nav-bar-submenu'}>
                 {
                     menuItem.subMenuItems.map((subMenuItem, key) => {
                         const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
 
                         return <li key={key}
-                                   className={[isMenuFocused && isSubMenuFocused && 'pc-nav-bar-submenu-label-focused']}
+                                   className={(isMenuFocused && isSubMenuFocused) ? 'pc-nav-bar-submenu-label-focused' : undefined}
                                    onClick={() => {
                                        setFocusedMenu(`${menuItem.en}`);
                                        setFocusedSubMenu(`${subMenuItem.en}`);
-                                   }}>
-                            {subMenuItem.ko}
-                        </li>
+                                   }}>{subMenuItem.ko}</li>
                     })
                 }
             </ul>
