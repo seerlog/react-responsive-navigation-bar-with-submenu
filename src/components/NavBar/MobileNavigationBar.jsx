@@ -58,11 +58,9 @@ const MobileNavigationBarItem = ({
 
     return (
         <div data-key={menuItem.en}
-             className={['mobile-nav-bar-item', ifTrue(isFoldSideBar, 'mobile-nav-bar-item-fold')].join(' ')}>
+             className={['mobile-nav-bar-item', ifTrue(isMenuFocused, 'mobile-nav-bar-menu-focused')].join(' ')}>
             <div data-key={menuItem.en}
-                 className={['mobile-nav-bar-menu'
-                     , ifTrue(isFoldSideBar, 'mobile-nav-bar-menu-fold', 'mobile-nav-bar-menu-unfold')
-                     , ifTrue(isMenuFocused, 'mobile-nav-bar-menu-focused')].join(' ')}
+                 className={'mobile-nav-bar-menu'}
                  onClick={() => {
                      const [firstSubMenuItem] = menuItem.subMenuItems;
                      setFocusedMenu(`${menuItem.en}`);
@@ -72,13 +70,11 @@ const MobileNavigationBarItem = ({
                     {menuItem.icon}
                 </div>
                 <div data-key={menuItem.en}
-                     className={['mobile-nav-bar-menu-label', ifTrue(isFoldSideBar, 'mobile-nav-bar-menu-label-fold')].join(' ')}>
+                     className={['mobile-nav-bar-menu-label'].join(' ')}>
                     {menuItem.ko}
                 </div>
             </div>
-            <ul className={['mobile-nav-bar-submenu'
-                , ifTrue(isFoldSideBar, 'mobile-nav-bar-submenu-hide')
-                , ifTrue((!isFoldSideBar && isMenuFocused), 'mobile-nav-bar-submenu-show')].join(' ')}>
+            <ul className={['mobile-nav-bar-submenu'].join(' ')}>
                 {
                     menuItem.subMenuItems.map((subMenuItem, key) => {
                         const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
