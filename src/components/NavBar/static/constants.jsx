@@ -99,14 +99,3 @@ export const menuItems = [
         ]
     },
 ]
-
-export const getFirstMenuItem = () => {
-    const [firstMenuItem] = menuItems;
-    return firstMenuItem;
-}
-
-export const getFirstSubMenuItem = () => {
-    const [firstMenuItem] = menuItems;
-    const [firstSubMenuItem] = firstMenuItem.subMenuItems;
-    return firstSubMenuItem;
-}

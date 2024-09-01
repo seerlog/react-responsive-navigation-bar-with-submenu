@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PcNavigationBar from './PcNavigationBar';
 import MobileNavigationBar from './MobileNavigationBar';
-import { menuItems, getFirstMenuItem, getFirstSubMenuItem } from './static/constants';
+import { menuItems } from './static/constants';
 import './static/navBar.css';
+import {getFirstMenuItem, getFirstSubMenuItem} from "./static/utils";
 
 export const NavBar = ({ ...props }) => {
     const [focusedMenu, setFocusedMenu] = useState(getFirstMenuItem().en);

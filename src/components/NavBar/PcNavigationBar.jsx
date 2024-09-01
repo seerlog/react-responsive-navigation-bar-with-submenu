@@ -1,6 +1,14 @@
-import {getFirstMenuItem, getFirstSubMenuItem, siteName} from "./static/constants";
+import {siteName} from "./static/constants";
+import {getFirstMenuItem, getFirstSubMenuItem, ifTrue} from "./static/utils";
 
-const PcNavigationBar = ({props, menuItems, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu}) => {
+const PcNavigationBar = ({
+                             props,
+                             menuItems,
+                             focusedMenu,
+                             setFocusedMenu,
+                             focusedSubMenu,
+                             setFocusedSubMenu
+                         }) => {
     return (
         <div>
             <div className={'pc-nav-bar'} {...props}>
@@ -30,9 +38,9 @@ const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubM
 
     return (
         <div data-key={menuItem.en}
-             className={['pc-nav-bar-item', isMenuFocused ? 'pc-nav-bar-menu-focused' : undefined].join(' ')}>
+             className={['pc-nav-bar-item', ifTrue(isMenuFocused, 'pc-nav-bar-menu-focused')].join(' ')}>
             <div data-key={menuItem.en}
-                 className={['pc-nav-bar-menu'].join(' ')}
+                 className={'pc-nav-bar-menu'}
                  onClick={() => {
                      const [firstSubMenuItem] = menuItem.subMenuItems;
                      setFocusedMenu(`${menuItem.en}`);
@@ -46,7 +54,7 @@ const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubM
                         const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
 
                         return <li key={key}
-                                   className={(isMenuFocused && isSubMenuFocused) ? 'pc-nav-bar-submenu-label-focused' : undefined}
+                                   className={ifTrue((isMenuFocused && isSubMenuFocused), 'pc-nav-bar-submenu-label-focused')}
                                    onClick={() => {
                                        setFocusedMenu(`${menuItem.en}`);
                                        setFocusedSubMenu(`${subMenuItem.en}`);
