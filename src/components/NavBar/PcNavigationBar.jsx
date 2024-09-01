@@ -1,13 +1,14 @@
-const PcNavigationBar = ({ props, menuItems, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu }) => {
+import {getFirstMenuItem, getFirstSubMenuItem} from "./static/constants";
+
+const PcNavigationBar = ({props, menuItems, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu}) => {
     return (
         <div>
-            <div className={['pc-nav-bar'].join(' ')} {...props}>
-                <div className={['pc-nav-bar-logo'].join(' ')}
-                    onClick={() => {
-                        setFocusedMenu(menuItems[0].en);
-                        setFocusedSubMenu(menuItems[0].subMenuItems[0].en);
-                    }}>
-                    RIDION
+            <div className={['pc-nav-bar']} {...props}>
+                <div className={['pc-nav-bar-logo']}
+                     onClick={() => {
+                         setFocusedMenu(getFirstMenuItem().en);
+                         setFocusedSubMenu(getFirstSubMenuItem().en);
+                     }}>RIDION
                 </div>
                 {
                     menuItems.map((menuItem, key) =>
@@ -17,7 +18,7 @@ const PcNavigationBar = ({ props, menuItems, focusedMenu, setFocusedMenu, focuse
                             focusedMenu={focusedMenu}
                             setFocusedMenu={setFocusedMenu}
                             focusedSubMenu={focusedSubMenu}
-                            setFocusedSubMenu={setFocusedSubMenu} />
+                            setFocusedSubMenu={setFocusedSubMenu}/>
                     )
                 }
             </div>
@@ -25,26 +26,34 @@ const PcNavigationBar = ({ props, menuItems, focusedMenu, setFocusedMenu, focuse
     )
 }
 
-const PcNavigationBarItem = ({ menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu }) => {
+const PcNavigationBarItem = ({menuItem, focusedMenu, setFocusedMenu, focusedSubMenu, setFocusedSubMenu}) => {
+    const isMenuFocused = focusedMenu === `${menuItem.en}`;
+
     return (
-        <div data-key={menuItem.en}
-            className={['pc-nav-bar-item']}>
+        <div data-key={menuItem.en} className={['pc-nav-bar-item']}>
             <div data-key={menuItem.en}
-                className={['pc-nav-bar-menu', focusedMenu === `${menuItem.en}` && 'pc-nav-bar-menu-focused'].join(' ')}
-                onClick={() => {
-                    setFocusedMenu(`${menuItem.en}`);
-                    setFocusedSubMenu(`${menuItem.subMenuItems[0].en}`);
-                }}>
+                 className={['pc-nav-bar-menu', isMenuFocused && 'pc-nav-bar-menu-focused'].join(' ')}
+                 onClick={() => {
+                     const [firstSubMenuItem] = menuItem.subMenuItems;
+                     setFocusedMenu(`${menuItem.en}`);
+                     setFocusedSubMenu(`${firstSubMenuItem.en}`);
+                 }}>
                 {menuItem.ko}
             </div>
             <ul className={['pc-nav-bar-submenu']}>
                 {
-                    menuItem.subMenuItems.map((subMenuItem, key) =>
-                        <li key={key} 
-                            className={[focusedMenu === `${menuItem.en}` && focusedSubMenu === `${subMenuItem.en}` && 'pc-nav-bar-submenu-label-focused']}
-                            onClick={() => { setFocusedMenu(`${menuItem.en}`); setFocusedSubMenu(`${subMenuItem.en}`); console.log(subMenuItem.en); }}>
+                    menuItem.subMenuItems.map((subMenuItem, key) => {
+                        const isSubMenuFocused = focusedSubMenu === `${subMenuItem.en}`;
+
+                        return <li key={key}
+                                   className={[isMenuFocused && isSubMenuFocused && 'pc-nav-bar-submenu-label-focused']}
+                                   onClick={() => {
+                                       setFocusedMenu(`${menuItem.en}`);
+                                       setFocusedSubMenu(`${subMenuItem.en}`);
+                                   }}>
                             {subMenuItem.ko}
-                        </li>)
+                        </li>
+                    })
                 }
             </ul>
         </div>

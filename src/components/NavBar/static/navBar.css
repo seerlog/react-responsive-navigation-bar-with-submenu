@@ -1,4 +1,4 @@
-/* pc */
+/********************************************************* PC *********************************************************/
 .pc-nav-bar {
     width: 100%;
     height: 50px;
@@ -51,13 +51,6 @@
     left: 120px;
 }
 
-.pc-nav-bar-item:hover .pc-nav-bar-submenu,
-.pc-nav-bar-submenu:hover
- {
-    display: flex;
-    flex-direction: row;
-}
-
 .pc-nav-bar-submenu > li {
     list-style: none;
     padding: 0 6px;
@@ -75,7 +68,15 @@
     color: #23D16E;
 }
 
-/* mobile */
+.pc-nav-bar-item:hover .pc-nav-bar-submenu,
+.pc-nav-bar-submenu:hover
+{
+    display: flex;
+    flex-direction: row;
+}
+/**********************************************************************************************************************/
+
+/******************************************************* MOBILE *******************************************************/
 .mobile-nav-bar {
     width: 150px;
     height: 100%;
@@ -129,7 +130,7 @@
     padding-left: 20px;
     color: #FFFFFF;
     user-select: none;
-    
+
     /* flex */
     display: flex;
     justify-content: center;
@@ -142,7 +143,7 @@
 
 .mobile-nav-bar-item {
     padding-left: 30px;
-    
+
     /* flex */
     display: flex;
     flex-direction: column;
@@ -176,7 +177,7 @@
     animation: fade-in 1s;
 }
 
-.mobile-nav-bar-menu-hover {
+.mobile-nav-bar-menu:hover {
     color: #23D16E;
 }
 
@@ -221,8 +222,7 @@
     animation: fade-in 1s;
 }
 
-.mobile-nav-bar-item:hover .mobile-nav-bar-submenu:not(.mobile-nav-bar-submenu-hide),
-.mobile-nav-bar-submenu:not(.mobile-nav-bar-submenu-hide):hover
+.mobile-nav-bar-item:hover .mobile-nav-bar-submenu:not(.mobile-nav-bar-submenu-hide)
  {
     display: flex;
     flex-direction: column;
@@ -247,6 +247,7 @@
 .mobile-nav-bar-submenu > li.mobile-nav-bar-submenu-label-focused {
     color: #23D16E;
 }
+/**********************************************************************************************************************/
 
 @keyframes fade-in {
     from {
