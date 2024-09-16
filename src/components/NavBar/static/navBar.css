@@ -33,6 +33,7 @@
     cursor: pointer;
     padding: 0 10px;
     user-select: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .pc-nav-bar > .pc-nav-bar-item > .pc-nav-bar-menu:hover {
@@ -54,6 +55,7 @@
     font-weight: 800;
     cursor: pointer;
     user-select: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .pc-nav-bar > .pc-nav-bar-item > .pc-nav-bar-submenu > li:hover {
@@ -72,6 +74,7 @@
 .pc-nav-bar > .pc-nav-bar-item > .pc-nav-bar-submenu:hover {
     display: flex;
     flex-direction: row;
+    animation: fade-in 1s;
 }
 /**********************************************************************************************************************/
 
@@ -83,7 +86,7 @@
     top: 0;
     left: 0;
     background-color: #242424;
-    transition: width 0.2s ease;
+    transition: width 0.2s ease-in-out;
 
     /* flex */
     display: none;
@@ -156,16 +159,17 @@
 
 .mobile-nav-bar > .mobile-nav-bar-item > .mobile-nav-bar-menu {
     align-self: flex-start;
+    width: 100%;
     cursor: pointer;
     padding: 10px 0;
     color: #8C8C8C;
     user-select: none;
-    animation: fade-in 1s;
+    transition: color 0.3s ease, transform 0.3s ease;
 
     /* flex */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -173,8 +177,15 @@
     color: #23D16E;
 }
 
+.mobile-nav-bar:not(.mobile-nav-bar-fold) > .mobile-nav-bar-item > .mobile-nav-bar-menu,
+.mobile-nav-bar:not(.mobile-nav-bar-fold) > .mobile-nav-bar-item > .mobile-nav-bar-submenu
+ {
+    animation: fade-in 1s;
+}
+
 .mobile-nav-bar.mobile-nav-bar-fold > .mobile-nav-bar-item > .mobile-nav-bar-menu {
     align-self: auto;
+    justify-content: center;
 }
 
 .mobile-nav-bar > .mobile-nav-bar-item > .mobile-nav-bar-menu > .mobile-nav-bar-menu-icon {
@@ -204,7 +215,6 @@
 .mobile-nav-bar > .mobile-nav-bar-item.mobile-nav-bar-menu-focused > .mobile-nav-bar-submenu {
     display: flex;
     flex-direction: column;
-    animation: fade-in 1s;
 }
 
 .mobile-nav-bar > .mobile-nav-bar-item > .mobile-nav-bar-submenu {
@@ -221,7 +231,6 @@
 .mobile-nav-bar > .mobile-nav-bar-item:hover > .mobile-nav-bar-submenu {
     display: flex;
     flex-direction: column;
-    animation: fade-in 1s;
 }
 
 .mobile-nav-bar.mobile-nav-bar-fold > .mobile-nav-bar-item:hover > .mobile-nav-bar-submenu {
@@ -237,6 +246,7 @@
     user-select: none;
     padding: 4px 0;
     list-style: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .mobile-nav-bar > .mobile-nav-bar-item > .mobile-nav-bar-submenu > li:hover {
